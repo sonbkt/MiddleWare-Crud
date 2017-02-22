@@ -33,6 +33,17 @@ router.get('/users/:id', (req, res) => {
       res.render('users/user-detail.njk.html', {user: user});
   })
 })
+// Delete user
+router.get('/users/delete/:id', (req, res) => {
+  db.collection('users').deleteOne({
+    _id : new ObjectId(req.params.id)
+  }, (err, result) => {
+    console.log(result);
+    res.redirect('/users/add');
+  })
+})
+
+//
 
 
 
