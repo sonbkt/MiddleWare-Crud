@@ -1,0 +1,9 @@
+<h1>Update form</h1>
+<form class="" action='/users/update/{{user._id}}' method="post">
+  Name : <input type="text" name="name" value="" placeholder="Your Name">
+  Age  : <input type="text" name="age" value="" placeholder="Your Age">
+  <input type="submit" name="" value="Submit">
+</form>
+<h2>Your old name, age</h2>
+<h3>Name : {{user.name}}</h3>
+<h3>Age  : {{user.age}}</h3>

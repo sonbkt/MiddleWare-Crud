@@ -1,0 +1,11 @@
+<h1>User list</h1>
+
+<ol>
+  {% for user in users %}
+    <a href="/users/{{user._id}}">Name : {{user.name}} Age: {{user.age}}</a>
+    <a href="/users/delete/{{user._id}}">Delete</a>
+    <a href="/users/update/{{user._id}}">Update</a>
+    <br>
+  {%endfor%}
+</ol>
+<a href="/users/add" type="button">Add</a>
