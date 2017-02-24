@@ -5,5 +5,6 @@ module.exports.addForm = function(req, res) {
 module.exports.add     = function(req, res) {
   req.app.connection.collection('users').save(req.body, (err, result) => {
     console.log("Save to database");
+    res.redirect('/users/add');
    })
 }
