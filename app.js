@@ -5,6 +5,8 @@ const mongodb = require('./mongodb.provider.js');
 const expressNunjucks = require('express-nunjucks');
 app.set('views', __dirname + '/templates');
 const njk = expressNunjucks(app);
+const bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended: false}));
 
 
 
