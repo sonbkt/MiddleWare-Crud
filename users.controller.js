@@ -14,3 +14,10 @@ module.exports.list = function(req, res) {
     res.render('users/user-list.njk.html' ,{users : users});
   })
 }
+module.exports.delete = function(req, res) {
+  req.app.connection.collection('users').deleteOne({
+    _id : new ObjectId(req.params.id)
+  }).then(() => {
+    res.redirect('/users');
+  })
+}
