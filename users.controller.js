@@ -14,6 +14,13 @@ module.exports.list = function(req, res) {
     res.render('users/user-list.njk.html' ,{users : users});
   })
 }
+module.exports.detail = function(req, res) {
+  req.app.connection.collection('users').findOne({
+    _id : new ObjectId(req.params.id)
+  }).then((user) => {
+    res.render('users/user-detail.njk.html', {user : user});
+  })
+}
 module.exports.delete = function(req, res) {
   req.app.connection.collection('users').deleteOne({
     _id : new ObjectId(req.params.id)
