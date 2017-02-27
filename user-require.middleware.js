@@ -1,7 +1,7 @@
 const ObjectId = require('mongodb').ObjectId;
 module.exports = function(req, res, next) {
   if(req.params.id.length != 24) {
-    return res.render('error.njk.html', {message : "ID is not Invalid"})
+    return res.render('error.njk.html', {message : "ID is not Invalid must be 24 characters"});
   }
   req.app.connection.collection("users").findOne({
     _id : new ObjectId(req.params.id)

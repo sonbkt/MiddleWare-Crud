@@ -5,7 +5,7 @@ module.exports.addForm = function(req, res) {
 module.exports.add     = function(req, res) {
   req.app.connection.collection('users').save(req.body, (err, result) => {
     console.log("Save to database");
-    res.redirect('/users/add');
+    res.redirect('/users');
    })
 }
 module.exports.list = function(req, res) {
@@ -27,4 +27,21 @@ module.exports.delete = function(req, res) {
   }).then(() => {
     res.redirect('/users');
   })
+}
+module.exports.updateForm = function(req, res) {
+  req.app.connection.collection('users').findOne({
+    _id : new ObjectId(req.params.id)
+  }).then((user) => {
+      res.render('users/user-update.njk.html', {user : user});
+  })
+}
+module.exports.update = function(req, res) {
+    req.app.connection.collection('users')
+    .updateOne({
+      _id : new ObjectId(req.params.id)
+    }, {
+      $set : {name : req.body.name, age  : req.body.age}
+    }).then((result) => {
+      res.redirect('/users');
+    })
 }
