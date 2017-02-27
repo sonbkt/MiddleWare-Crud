@@ -4,7 +4,7 @@ const usersController = require('./users.controller');
 const userNameNotExitedMiddleware = require('./username-notexisted.middleware.js');
 
 router.get('/users/add', usersController.addForm);
-router.post('/users/add', userNameNotExitedMiddleware, usersController.add);
+router.post('/users', userNameNotExitedMiddleware, usersController.add);
 
 
 module.exports = router;
