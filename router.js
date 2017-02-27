@@ -5,6 +5,6 @@ const userNameNotExitedMiddleware = require('./username-notexisted.middleware.js
 
 router.get('/users/add', usersController.addForm);
 router.post('/users', userNameNotExitedMiddleware, usersController.add);
-
+router.get('/users', usersController.list);
 
 module.exports = router;

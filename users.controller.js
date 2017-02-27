@@ -8,3 +8,9 @@ module.exports.add     = function(req, res) {
     res.redirect('/users/add');
    })
 }
+module.exports.list = function(req, res) {
+  req.app.connection.collection('users').find().toArray()
+  .then((users) => {
+    res.render('users/user-list.njk.html' ,{users : users});
+  })
+}
